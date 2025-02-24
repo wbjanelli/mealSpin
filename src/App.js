@@ -5,7 +5,8 @@ function App() {
   const [isSpinning, setIsSpinning] = useState(false);
   const [rotation, setRotation] = useState(0);
   const [selectedRecipe, setSelectedRecipe] = useState(null);
-
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  // Your recipes data (unchanged)
   // Original 10 recipes with detailed structure
   const originalRecipes = [
     {
@@ -1291,8 +1292,12 @@ function App() {
 
   const recipes = [...originalRecipes, ...additionalRecipes];
 
+  const filteredRecipes = selectedCategory === 'All'
+    ? recipes
+    : recipes.filter(recipe => recipe.category === selectedCategory);
+
   const spinWheel = () => {
-    if (isSpinning || !recipes.length) return;
+    if (isSpinning || !filteredRecipes.length) return;
 
     setIsSpinning(true);
     setSelectedRecipe(null);
@@ -1300,8 +1305,8 @@ function App() {
     setRotation(prevRotation => prevRotation + randomRotation);
 
     setTimeout(() => {
-      const randomIndex = Math.floor(Math.random() * recipes.length);
-      setSelectedRecipe(recipes[randomIndex]);
+      const randomIndex = Math.floor(Math.random() * filteredRecipes.length);
+      setSelectedRecipe(filteredRecipes[randomIndex]);
       setIsSpinning(false);
     }, 3000);
   };
@@ -1311,11 +1316,49 @@ function App() {
     setRotation(0);
   };
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setRotation(0);
+    setSelectedRecipe(null);
+  };
+
   return (
     <div className="app-container">
       <header className="app-header">
         <h1 className="title">mealSpin</h1>
         <p className="subtitle">What the FUCK should I eat?</p>
+        <div className="meal-buttons">
+          <button
+            className={`meal-button ${selectedCategory === 'All' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('All')}
+          >
+            All
+          </button>
+          <button
+            className={`meal-button ${selectedCategory === 'Breakfast' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('Breakfast')}
+          >
+            Breakfast
+          </button>
+          <button
+            className={`meal-button ${selectedCategory === 'Lunch' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('Lunch')}
+          >
+            Lunch
+          </button>
+          <button
+            className={`meal-button ${selectedCategory === 'Dinner' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('Dinner')}
+          >
+            Dinner
+          </button>
+          <button
+            className={`meal-button ${selectedCategory === 'Snacks' ? 'active' : ''}`}
+            onClick={() => handleCategoryChange('Snacks')}
+          >
+            Snacks
+          </button>
+        </div>
       </header>
 
       <main className="app-main">
@@ -1328,7 +1371,6 @@ function App() {
               transition: isSpinning ? 'transform 3s ease-out' : 'none'
             }}
           >
-            {/* Wheel segments are styled in CSS */}
             <div className="wheel-pointer"></div>
           </div>
         </div>
