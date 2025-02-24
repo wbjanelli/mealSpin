@@ -1315,7 +1315,7 @@ function App() {
     <div className="app-container">
       <header className="app-header">
         <h1 className="title">mealSpin</h1>
-        <p className="subtitle">EASY HEALTHY</p>
+        <p className="subtitle">What the FUCK should I eat?</p>
       </header>
 
       <main className="app-main">
