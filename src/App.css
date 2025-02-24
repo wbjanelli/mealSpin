@@ -1,38 +1,194 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); /* Bold, futuristic monospaced font */
+
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
   text-align: center;
+  font-family: Helvetica, sans-serif;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #ecf0f1 0%, #dfe6e9 50%, #b2bec3 100%); /* Smooth, complementary gradient */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-header {
+  position: relative;
+  z-index: 10;
+  padding-top: 40px; /* Reduced from 60px to move content up */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title {
+  font-family: 'Audiowide', sans-serif; /* Sharp, techy font */
+  font-size: 4.5em; /* Large for impact */
+  color: #e74c3c; /* Vibrant red */
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Bolder shadow for depth */
+  margin: 0 0 20px 0; /* Space between title and subtitle */
+  letter-spacing: 2px; /* Spacing for a sleek, monospaced look */
+  text-transform: uppercase; /* Uppercase for boldness and intrigue */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.subtitle {
+  color: #7f8c8d;
+  font-size: 1.5em;
+  margin: 0 0 10px 0; /* Keeps wheel close to subtitle */
+  font-style: italic;
+}
+
+.app-main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  height: calc(100vh - 140px); /* Reduced from 160px to move wheel up */
+}
+
+.wheel-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wheel {
+  width: 70vw; /* Smaller to fit under title */
+  height: 70vw;
+  max-width: 70vh;
+  max-height: 70vh;
+  position: relative;
+  cursor: pointer;
+  background: #fff; /* White base like Wheel of Fortune */
+  border-radius: 50%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+/* Wheel of Fortune-style segments */
+.wheel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: conic-gradient(
+    #e74c3c 0deg 30deg, /* Red */
+    #3498db 30deg 60deg, /* Blue */
+    #f1c40f 60deg 90deg, /* Yellow */
+    #2ecc71 90deg 120deg, /* Green */
+    #9b59b6 120deg 150deg, /* Purple */
+    #e67e22 150deg 180deg, /* Orange */
+    #e74c3c 180deg 210deg,
+    #3498db 210deg 240deg,
+    #f1c40f 240deg 270deg,
+    #2ecc71 270deg 300deg,
+    #9b59b6 300deg 330deg,
+    #e67e22 330deg 360deg
+  );
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Center circle */
+.wheel::after {
+  content: 'SPIN';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20%;
+  height: 20%;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2vw;
+  font-weight: bold;
+  color: #2c3e50;
+  border: 4px solid #34495e;
+  z-index: 3;
+}
+
+/* Pointer (triangle above wheel) */
+.wheel-pointer {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 30px solid #34495e; /* Dark pointer */
+  z-index: 2;
+}
+
+/* Overlay Styles */
+.recipe-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.recipe-modal {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.recipe-modal h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.prep-time {
+  color: #7f8c8d;
+  margin-bottom: 20px;
+}
+
+.recipe-section {
+  margin: 20px 0;
+}
+
+.recipe-section h3 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.recipe-section ul,
+.recipe-section ol {
+  padding-left: 20px;
+  color: #2c3e50;
+}
+
+.new-spin-button {
+  background: #2ecc71;
   color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.new-spin-button:hover {
+  background: #27ae60;
 }
