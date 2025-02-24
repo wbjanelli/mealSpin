@@ -1,37 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap'); /* Bold, futuristic monospaced font */
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&display=swap');
 
+/* Base styles for mobile (small screens) */
 .app-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   font-family: Helvetica, sans-serif;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #ecf0f1 0%, #dfe6e9 50%, #b2bec3 100%); /* Smooth, complementary gradient */
+  background: linear-gradient(135deg, #ecf0f1 0%, #dfe6e9 50%, #b2bec3 100%);
 }
 
 .app-header {
   position: relative;
   z-index: 10;
-  padding-top: 40px; /* Reduced from 60px to move content up */
+  padding-top: 20px;
 }
 
 .title {
-  font-family: 'Audiowide', sans-serif; /* Sharp, techy font */
-  font-size: 4.5em; /* Large for impact */
-  color: #e74c3c; /* Vibrant red */
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4); /* Bolder shadow for depth */
-  margin: 0 0 20px 0; /* Space between title and subtitle */
-  letter-spacing: 2px; /* Spacing for a sleek, monospaced look */
-  text-transform: uppercase; /* Uppercase for boldness and intrigue */
+  font-family: 'Audiowide', sans-serif;
+  font-size: 2.5em;
+  color: #e74c3c;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .subtitle {
   color: #7f8c8d;
-  font-size: 1.5em;
-  margin: 0 0 10px 0; /* Keeps wheel close to subtitle */
+  font-size: 1em;
+  margin: 0 0 2px 0; /* Reduced from 5px to 2px */
   font-style: italic;
 }
 
@@ -39,7 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 140px); /* Reduced from 160px to move wheel up */
+  min-height: calc(100vh - 62px); /* Reduced from 65px to 62px */
 }
 
 .wheel-container {
@@ -51,19 +52,18 @@
 }
 
 .wheel {
-  width: 70vw; /* Smaller to fit under title */
-  height: 70vw;
-  max-width: 70vh;
-  max-height: 70vh;
+  width: 80vw;
+  height: 80vw;
+  max-width: 80vh;
+  max-height: 80vh;
   position: relative;
   cursor: pointer;
-  background: #fff; /* White base like Wheel of Fortune */
+  background: #fff;
   border-radius: 50%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
 
-/* Wheel of Fortune-style segments */
 .wheel::before {
   content: '';
   position: absolute;
@@ -72,12 +72,12 @@
   width: 100%;
   height: 100%;
   background: conic-gradient(
-    #e74c3c 0deg 30deg, /* Red */
-    #3498db 30deg 60deg, /* Blue */
-    #f1c40f 60deg 90deg, /* Yellow */
-    #2ecc71 90deg 120deg, /* Green */
-    #9b59b6 120deg 150deg, /* Purple */
-    #e67e22 150deg 180deg, /* Orange */
+    #e74c3c 0deg 30deg,
+    #3498db 30deg 60deg,
+    #f1c40f 60deg 90deg,
+    #2ecc71 90deg 120deg,
+    #9b59b6 120deg 150deg,
+    #e67e22 150deg 180deg,
     #e74c3c 180deg 210deg,
     #3498db 210deg 240deg,
     #f1c40f 240deg 270deg,
@@ -89,7 +89,6 @@
   z-index: 1;
 }
 
-/* Center circle */
 .wheel::after {
   content: 'SPIN';
   position: absolute;
@@ -103,24 +102,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2vw;
+  font-size: 5vw;
   font-weight: bold;
   color: #2c3e50;
-  border: 4px solid #34495e;
+  border: 2px solid #34495e;
   z-index: 3;
 }
 
-/* Pointer (triangle above wheel) */
 .wheel-pointer {
   position: absolute;
-  top: -20px;
+  top: -10px;
   left: 50%;
   transform: translateX(-50%);
   width: 0;
   height: 0;
-  border-left: 15px solid transparent;
-  border-right: 15px solid transparent;
-  border-bottom: 30px solid #34495e; /* Dark pointer */
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #34495e;
   z-index: 2;
 }
 
@@ -140,11 +138,10 @@
 
 .recipe-modal {
   background: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 15px;
+  border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: left;
-  max-width: 500px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
@@ -152,38 +149,42 @@
 
 .recipe-modal h2 {
   color: #2c3e50;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 1.5em;
 }
 
 .prep-time {
   color: #7f8c8d;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  font-size: 0.9em;
 }
 
 .recipe-section {
-  margin: 20px 0;
+  margin: 15px 0;
 }
 
 .recipe-section h3 {
   color: #3498db;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  font-size: 1.2em;
 }
 
 .recipe-section ul,
 .recipe-section ol {
-  padding-left: 20px;
+  padding-left: 15px;
   color: #2c3e50;
+  font-size: 0.9em;
 }
 
 .new-spin-button {
   background: #2ecc71;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 1em;
-  margin-top: 20px;
+  font-size: 0.9em;
+  margin-top: 15px;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -191,4 +192,80 @@
 
 .new-spin-button:hover {
   background: #27ae60;
+}
+
+/* Media Queries for larger screens */
+@media screen and (min-width: 768px) {
+  .app-container {
+    padding: 20px;
+  }
+
+  .app-header {
+    padding-top: 40px;
+  }
+
+  .title {
+    font-size: 4.5em;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+
+  .subtitle {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .app-main {
+    height: calc(100vh - 120px);
+  }
+
+  .wheel {
+    width: 70vw;
+    height: 70vw;
+    max-width: 70vh;
+    max-height: 70vh;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .wheel::after {
+    font-size: 2vw;
+    border: 4px solid #34495e;
+  }
+
+  .wheel-pointer {
+    top: -20px;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid #34495e;
+  }
+
+  .recipe-modal {
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 500px;
+  }
+
+  .recipe-modal h2 {
+    font-size: 1.8em;
+  }
+
+  .prep-time {
+    font-size: 1em;
+  }
+
+  .recipe-section h3 {
+    font-size: 1.4em;
+  }
+
+  .recipe-section ul,
+  .recipe-section ol {
+    font-size: 1em;
+  }
+
+  .new-spin-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    margin-top: 20px;
+  }
 }
