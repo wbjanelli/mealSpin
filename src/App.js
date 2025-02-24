@@ -1326,7 +1326,7 @@ function App() {
     <div className="app-container">
       <header className="app-header">
         <h1 className="title">mealSpin</h1>
-        <p className="subtitle">What the FUCK should I eat?</p>
+        <p className="subtitle">Healthy Simple Recipes</p>
         <div className="meal-buttons">
           <button
             className={`meal-button ${selectedCategory === 'All' ? 'active' : ''}`}
